@@ -1,0 +1,14 @@
+{% extends "itasc/base.html" %}
+{% block content1 %}
+    <a href="{% url 'itasc:measurements-list' %}">Measures:</a> {{ Nmeasures }}
+    <a href="{% url 'itasc:devices-list' %}"> Devices:</a>  {{ Ndevices }}
+    <a href="{% url 'itasc:patients-list' %}"> Patients:</a>  {{ Npatients }}
+    <a href="{% url 'itasc:pairings-list' %}"> Pairings:</a> {{ Npairings }}
+{% endblock %}
+{% block footer %}
+{% include 'itasc/footer.html' %}
+{% endblock %}
+
+
+
+
