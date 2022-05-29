@@ -1,7 +1,7 @@
 # itasc
 M+hub webhook dashboard and data administration site for iTASC.
 
-Needs to be run in production server with Gunicorn, Nginx and mysql/mariadb 
+Needs to be run in production server with Gunicorn, Nginx, mysql/mariadb to produce webhook (public URL) 
 
 Requirements : python 3.9, django, (see requirements.txt)
 
