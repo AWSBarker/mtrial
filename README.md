@@ -8,4 +8,4 @@ Requirements : python 3.9, django (see requirements.txt)
 TODO before release
 1. User login
 2. Secrets .env
-3. 
+3. Device auto add on measure
