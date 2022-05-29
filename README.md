@@ -12,8 +12,8 @@ Requirements : python 3.9, django, (see requirements.txt)
 - coloured sys/Dia ranges, set in admin
 
 ### FUNCTIONS
-A. Admin login allows export of data CSV, create users/groups
-B. Login required to view data
+- Admin login allows export of data CSV, create users/groups
+- Login required to view data
 C. Devices added by adding webhook (http.../itasc/bp/) in M+hub then measure
 D. Patient added via Admin
 E. Patients paired with devices (1 to 1) in Admin and Login
