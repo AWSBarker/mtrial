@@ -1,5 +1,3 @@
-# based on Person, Group, Membership
-# Subject, Device, TrialData
 from django.db import models
 from django.urls import reverse
 
@@ -9,8 +7,8 @@ class PairedManager(models.Manager):
         return super().get_queryset().exclude(pairing__device__gt=0)
 
 class Devices(models.Model):
+    ''' Devices add manually. Can add auto add via webhook measure'''
     imei = models.PositiveBigIntegerField(primary_key=True)
-    #paired = PairedManager()
 
     def __str__(self):
         return str(self.imei)
@@ -23,8 +21,10 @@ class Devices(models.Model):
         ordering = ['-imei']
 
 class Patients(models.Model):
+    ''' patients are paired into subjects in Pairings.
+    Extra fields could be added but IDs HIPPA GDPR....!
+    '''
     patientid = models.CharField(primary_key=True, max_length=20)
-    #device = models.ForeignKey(Devices, on_delete=models.DO_NOTHING, related_name='pairing') #control allocation elsewhere, unique=True)
 
     def __str__(self):
         return self.patientid
@@ -41,7 +41,7 @@ class Patients(models.Model):
         #constraints = [models.UniqueConstraint(fields=['patientid', 'device'], name = 'paired')]
 
 class Pairings(models.Model):
-    ''' unique pairs of current patient - devices'''
+    ''' unique pairs of current patient - devices '''
     id = models.AutoField(primary_key=True)
     subject = models.OneToOneField(Patients, on_delete=models.DO_NOTHING, unique=True)
     device = models.OneToOneField(Devices, on_delete=models.DO_NOTHING, unique=True)
@@ -157,8 +157,3 @@ class Measurements(models.Model):
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
 
-'''
-class Pairing(models.Model):
-    device = models.ForeignKey(Devices, on_delete=models.DO_NOTHING)
-    patient = models.ForeignKey(Patient, on_delete=models.DO_NOTHING)
-'''

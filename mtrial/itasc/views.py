@@ -13,6 +13,7 @@ from django.views.generic.list import ListView
 from itasc.models import Patients, Pairings
 from django.urls import reverse_lazy
 from itasc.forms import PairingsForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class DashMixin(object):
     ''' adds context from all models to dashboard template '''
@@ -32,7 +33,7 @@ class MeasurementsListView(DashMixin, ListView):
     template_name = 'itasc/measurements_list.html'
     paginate_by = 30
 
-class PairingsCreateView(DashMixin, SuccessMessageMixin, CreateView):
+class PairingsCreateView(LoginRequiredMixin, DashMixin, SuccessMessageMixin, CreateView):
     model = Pairings
     form_class = PairingsForm
     #fields = ['subject', 'device']
@@ -44,7 +45,7 @@ class PatientsListView(DashMixin, ListView):
     model = Patients
     template_name = 'itasc/patients_list.html'
 
-class DashBoard(DashMixin, ListView):
+class DashBoard(LoginRequiredMixin, DashMixin, ListView):
     context_object_name = 'dash_list'
     template_name = 'itasc/home.html'
     queryset = ''
@@ -57,9 +58,11 @@ class DevicesListView(DashMixin, ListView):
     model = Devices
     template_name = 'itasc/devices_list.html'
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 @csrf_exempt
 def webhook(request):
+# GET API to return ALL or some Measurements
+# POST to database, assign by custom save  to subject and  (add devices)
 
     if request.method == 'GET':
         last10 = Measurements.objects.all() # [:5] .latest()
@@ -71,11 +74,13 @@ def webhook(request):
         data['metadata_deviceGroups'] = "N/A"
         post = Measurements()
         for (k,v) in data.items():
-            print(f'post field is {k}, value is {v}')
+            # convert o/1 to False/True
             if v in ('true', 'True', 1, True):
                 v = True
             if v in ('false', 'False', 0, False):
                 v = False
             setattr(post, k.lower(), v) # post.device_imei = data['device_IMEI']
         post.save()
+        # add any new devices
+        Devices.objects.update_or_create(imei = post.device_imei)
         return Response({"status": "success", "data": data}, status=status.HTTP_200_OK)

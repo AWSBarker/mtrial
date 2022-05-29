@@ -11,5 +11,8 @@ urlpatterns = [
     path('pairings/', PairingsListView.as_view(), name='pairings-list'),
     path('pairings/create/', PairingsCreateView.as_view(), name='pairings-create'),
     path('devices/', DevicesListView.as_view(), name='devices-list'),
+#    path('login/',LoginView.as_view(),name="login_url"),
+#    path('register/',views.registerView,name="register_url"),
+#    path('logout/',LogoutView.as_view(next_page='dashboard'),name="logout"),
 ]
 

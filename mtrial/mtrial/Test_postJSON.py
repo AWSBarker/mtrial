@@ -1,12 +1,14 @@
+# random POST dummy measures to localhost/itasc/bp/
 import requests
 from flatdict import FlatDict
 import random, string
 from datetime import datetime as dt
 
+# dummy data fields
 rsys = random.randrange(125, 155)
 rdia = random.randrange(75, 89)
 rpulse = random.randrange(55, 100)
-rimei = random.randrange(358173054439512, 358173054439517)
+rimei = random.randrange(358173054439512, 358173054439527)
 rts = dt.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 mts = dt.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 cid1 = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
@@ -41,11 +43,7 @@ load = {"metadata":
                          "systolicBloodPressure": {"value": rsys, "unit": "mmHg", "isInRange": 'false'},
                          "timestamp": rts}
         }
-print(rimei)
-#load['measurements']['timestamp'] = dt.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 flat_dict = FlatDict(load, delimiter='_')
-
-# field separators (normalise) = '_', so measurements_annotations_pulse
 response = requests.post(aurl, json= load)
 print(response.status_code)
 

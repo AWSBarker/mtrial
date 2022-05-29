@@ -2,21 +2,15 @@ from django.contrib import admin
 from .models import Devices, Patients, Measurements, Pairings
 import csv
 from django.http import HttpResponse
-# Register your models here.
 
 @admin.action(description='Export selected to CSV')
 def export_csv(modeladmin, request, queryset):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="M+hubexport.csv"'
     writer = csv.writer(response)
-    print(modeladmin.fields)
     writer.writerow(modeladmin.fields) #['measurements_timestamp', 'metadata_receivedtime', 'device_imei', 'measurements_systolicbloodpressure_value','measurements_diastolicbloodpressure_value'])
-
     cs = queryset.values_list(*modeladmin.fields)
-        #'measurements_timestamp', 'metadata_receivedtime', 'device_imei', 'measurements_systolicbloodpressure_value','measurements_diastolicbloodpressure_value')
     writer.writerows(cs)
-    #for c in cs:
-    #    writer.writerow(c)
     return response
 
 class PairingsAdmin(admin.ModelAdmin):
@@ -34,10 +28,6 @@ class PatientsAdmin(admin.ModelAdmin):
     fields = ('patientid',)
     list_display = ('patientid','get_paired')
     list_select_related = True
-#    readonly_fields = ('device',)
-#    list_filter = (['device_imei', 'measurements_timestamp'])
-    #search_fields = (['patientdevice'])
-    #search_help_text = 'Search by IMEI (any digits)'
 
     @admin.display(description='paired with')
     def get_paired(self, obj):
@@ -87,4 +77,6 @@ admin.site.register(Patients, PatientsAdmin)
 admin.site.register(Measurements, MeasurementsAdmin)
 admin.site.site_url = "/itasc"
 admin.site.site_header = "M+Hub webhook Admin for Users / Devices / Patients / Measurements"
+admin.site.site_title = "site_title>"
+admin.site.index_title = "Selection"
 admin.site.disable_action('delete_selected')
