@@ -1,7 +1,7 @@
 # iTASC
-M+hub webhook dashboard and data administration site for iTASC trial
+M+hub webhook dashboard and data administration site for iTASC trial.
 
-Needs to be run on public URL server (AWS Lightsail) with HTTPS to produce webhook for D40g 
+Needs to be run on public URL server (AWS Lightsail) with HTTPS to produce webhook for D40g set in M+hub.
 
 Based on Django framework with mysql, see requirements.txt for environment.
 
