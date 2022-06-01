@@ -21,7 +21,7 @@ DATABASES = {
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(f'base dir = {BASE_DIR}, debug {DEBUG}')
+
 ALLOWED_HOSTS = ['*'] # config(ALLOWED_HOSTS) # = ['172.26.4.226', '3.72.60.211']
 
 # Application definition
