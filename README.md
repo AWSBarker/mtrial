@@ -20,10 +20,15 @@ See settings.py for production guides and links. .env required for secrets.
 - graphics per device/pairing (see awsb.ddns.net/eliot/ 
 
 ### FUNCTIONS
-- Admin login allows export of data CSV, create users/groups
-- Login is required to view data and make pairings, Admin creates Users in Admin console
-- Devices can be auto added by adding the webhook (https.../itasc/bp/) in M+hub then taking first measure
-- PatientID added via Admin
-- Patients paired with devices (1 to 1) in Admin and Pair (if logged-in)
-- Data selected/exported to CSV from Admin, Measures OR to JSON by GET (https.../itasc/bp/)
+- Login is required access a. Admin panel and b. view site dashboard
+- Admin panel login allows admin the rights to export of data CSV, creation of other users/groups, editing items
+- User login and rights are controlled by Admin 
+- Pairings are made to match devices (IMEI) to subjects (PatientID) - A pair is unique one-to-one
+- A pairing is deleted (unpaired) in Admin panel, it does not delete the measurements allocated to a patient
+- A apired device cannot be allocated to another patient, it must be unpaired first
+- Devices (IMEI) are auto added by sending a measure after the webhook (https.../itasc/bp/) is set in M+hub
+- PatientID is only added/edited via Admin
+- Raw data can be viewed at the webhook URL (from Dashboard edit URL to show ...../itasc/bp/)  
 
+### User Help
+- 
