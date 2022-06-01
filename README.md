@@ -1,23 +1,22 @@
 # iTASC 
 ### M+hub webhook dashboard and data administration site for iTASC trial.
 
-Needs to be run on public URL server (AWS Lightsail) with HTTPS to produce webhook for D40g set in M+hub.
+Needs to be run on public URL server (AWS Lightsail) with HTTPS/TLS to produce webhook for D40g set in the M+hub.
 
-Based on Django framework with mysql, see requirements.txt for environment.
+Based on Django framework with mysql database, see requirements.txt for environment.
 
-See settings.py for production guides and links. .env required for secrets.
+See settings.py for production guides and links. .env is required for secrets.
 
 - v0.8 ready for cloning from github
-- Tested on Lightsail at https://3.72.60.211/itasc/
+- Tested on Lightsail at https://3.72.60.211/itasc/ (without TLS certificate 1 June 2022) 
 
 
 ## TODO after cloning onto new Ligthsail django instance:
 - follow this guide https://docs.bitnami.com/aws/infrastructure/django/get-started/get-started/
 - create your own .env files with SECRET_KEY, DEBUG, DATABASE_URL AND ALLOWED_HOSTS 
-
-## NICE To HAVE
+## TODO NICE To HAVEs in v1
 - coloured sys/Dia ranges (like in Admin)
-- graphics per device/pairing (see awsb.ddns.net/eliot/ 
+- graphics per device/pairing (see awsb.ddns.net/eliot/ )
 
 ### FUNCTIONS
 - Login is required access a. Admin panel and b. view site dashboard
