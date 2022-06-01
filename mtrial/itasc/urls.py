@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import webhook, PairingsCreateView, PairingsListView, \
+from .views import webhook, PairingsCreateView, PairingsListView, PairingsDetailView, \
     MeasurementsListView, PatientsListView, DashBoard, DevicesListView
 
 app_name = 'itasc'
@@ -10,6 +10,7 @@ urlpatterns = [
     path('patients/', PatientsListView.as_view(), name='patients-list'),
     path('pairings/', PairingsListView.as_view(), name='pairings-list'),
     path('pairings/create/', PairingsCreateView.as_view(), name='pairings-create'),
+    path('pairings/detail/<int:pk>/', PairingsDetailView.as_view(), name='pairings-detail'),
     path('devices/', DevicesListView.as_view(), name='devices-list'),
 #    path('login/',LoginView.as_view(),name="login_url"),
 #    path('register/',views.registerView,name="register_url"),

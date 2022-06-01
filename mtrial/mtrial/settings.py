@@ -1,8 +1,8 @@
 """
-Django settings for mtrial project.
-.env for secrets
+Django settings for mtrial project. .env for secrets
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+# see github source for deployment
 """
 from pathlib import Path
 from decouple import config
@@ -21,7 +21,8 @@ DATABASES = {
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-ALLOWED_HOSTS = ['*']
+print(f'base dir = {BASE_DIR}, debug {DEBUG}')
+ALLOWED_HOSTS = ['*'] # config(ALLOWED_HOSTS) # = ['172.26.4.226', '3.72.60.211']
 
 # Application definition
 INSTALLED_APPS = [
@@ -87,7 +88,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [BASE_DIR / "static"] #mtrial/static
+STATIC_ROOT = BASE_DIR / "staticfiles" #mtrial/staticfiles
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

@@ -8,6 +8,9 @@
   <a href="{% url 'login' %}">Log In</a>
 {% endif %}
 {% endblock %}
+{% block f2 %}
+{% include 'itasc/footer.html' %}
+{% endblock %}
 {% block content1 %}
     <a href="{% url 'itasc:measurements-list' %}">Measures:</a> {{ Nmeasures }}
     <a href="{% url 'itasc:devices-list' %}"> Devices:</a>  {{ Ndevices }}

@@ -10,7 +10,9 @@ from flatdict import FlatDict
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from itasc.models import Patients, Pairings
+
 from django.urls import reverse_lazy
 from itasc.forms import PairingsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -53,6 +55,11 @@ class DashBoard(LoginRequiredMixin, DashMixin, ListView):
 class PairingsListView(DashMixin, ListView):
     model = Pairings
     template_name = 'itasc/pairings_list.html'
+
+class PairingsDetailView(DashMixin, DetailView):
+    # not used
+    model = Pairings
+    template_name = 'itasc/pairings_detail.html'
 
 class DevicesListView(DashMixin, ListView):
     model = Devices

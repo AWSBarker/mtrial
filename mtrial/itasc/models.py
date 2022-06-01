@@ -50,7 +50,8 @@ class Pairings(models.Model):
         return str(self.subject) + ' - ' + str(self.device)
 
     def get_absolute_url(self):
-        return reverse('pairings-detail', kwargs={'pk': self.pk})
+        # not used. admin view turned off
+        return reverse('pairings-detail', kwargs={'pk': self.id})
 
     class Meta:
         #managed = False - removed to let django manage
@@ -138,7 +139,6 @@ class Measurements(models.Model):
     device_additionalattributes_devicever = models.TextField(db_column='device_additionalAttributes_deviceVer', blank=True, null=True)  # Field name made lowercase.
 
     patientid = models.CharField(max_length=20, null=True)
-
 
     class Meta:
         #managed = False - removed to let django manage

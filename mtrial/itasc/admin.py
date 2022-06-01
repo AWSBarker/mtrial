@@ -16,6 +16,7 @@ def export_csv(modeladmin, request, queryset):
 class PairingsAdmin(admin.ModelAdmin):
     fields = ('subject','device',)
     list_display = ('subject','device',)
+    view_on_site = False
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "device":
@@ -28,6 +29,7 @@ class PatientsAdmin(admin.ModelAdmin):
     fields = ('patientid',)
     list_display = ('patientid','get_paired')
     list_select_related = True
+    view_on_site = False
 
     @admin.display(description='paired with')
     def get_paired(self, obj):
@@ -43,6 +45,7 @@ class MeasurementsAdmin(admin.ModelAdmin):
     ordering = ('-measurements_timestamp',)
     search_help_text = 'Search by IMEI (any digits)'
     empty_value_display = 'None'
+    view_on_site = False
     actions = [export_csv]
 
     @admin.display(description='Sys/Dia Pulse (IHB)')
@@ -66,6 +69,7 @@ class DevicesAdmin(admin.ModelAdmin):
     fields = ('imei',)
     list_display = ('imei', 'get_paired')
     search_fields = (['imei'])
+    view_on_site = False
 
     @admin.display(description='paired with')
     def get_paired(self, obj):
