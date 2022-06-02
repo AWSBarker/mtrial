@@ -3,11 +3,13 @@
 <table class='table'>
     <tr>
         <th>Subject ID</th>
+        <th>Paired Device</th>
     </tr>
    {% if object_list %}
     {% for p in object_list %}
     <tr>
         <td>{{ p.patientid }}</td>
+        <td>{{ p.paired_device.device }}</td>
     </tr>
     {% endfor %}
 </table>

@@ -43,8 +43,8 @@ class Patients(models.Model):
 class Pairings(models.Model):
     ''' unique pairs of current patient - devices '''
     id = models.AutoField(primary_key=True)
-    subject = models.OneToOneField(Patients, on_delete=models.DO_NOTHING, unique=True)
-    device = models.OneToOneField(Devices, on_delete=models.DO_NOTHING, unique=True)
+    subject = models.OneToOneField(Patients, on_delete=models.DO_NOTHING, unique=True, related_name='paired_device')
+    device = models.OneToOneField(Devices, on_delete=models.DO_NOTHING, unique=True, related_name='paired_patient')
 
     def __str__(self):
         return str(self.subject) + ' - ' + str(self.device)

@@ -4,6 +4,7 @@ Django settings for mtrial project. .env for secrets
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 # see github source for deployment
 """
+import os.path
 from pathlib import Path
 from decouple import config
 import dj_database_url #required for mysql/mariadb
@@ -16,7 +17,6 @@ DATABASES = {
     'default': dj_database_url.config(
       default = config('DATABASE_URL')),
       'OPTIONS': {'sql_mode': 'traditional','CONN_MAX_AGE':5500},
-      #conn_max_age=500)
 }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -88,7 +88,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static"] #mtrial/static
+#STATICFILES_DIRS = [('itasc',  ''] #mtrial/static
 STATIC_ROOT = BASE_DIR / "staticfiles" #mtrial/staticfiles
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 # Default primary key field type

@@ -18,7 +18,7 @@ cid4 = ''.join(random.choices(string.ascii_letters + string.digits, k=4))
 cid5 = ''.join(random.choices(string.ascii_letters + string.digits, k=12))
 cid = '-'.join((cid1,cid2,cid3,cid4,cid5)).lower()
 
-aurl = 'http://127.0.0.1:8001/itasc/bp/'
+aurl = 'http://3.72.60.211/itasc/bp/'
 #load = {"correlationId": "c418e0b5-8d6e-4237-accf-e30c40a9b5c1", "IMEI": 358173054439520, "timestamp": "2022-05-18T13:46:01+01:00"}
 
 # json "99999" seems to 'convert' to 99999 with BigInteger

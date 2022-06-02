@@ -1,3 +1,5 @@
+import socket
+
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
@@ -27,7 +29,13 @@ class DashMixin(object):
         context['Npairings'] = Pairings.objects.all().count()
         context['last_measures'] = Measurements.objects.all().order_by('-measurements_timestamp')[:10]
         context['Lpairs'] = Pairings.objects.all()
+        context['myip'] = self.request.get_host()
         return context
+
+class DashBoard(LoginRequiredMixin, DashMixin, ListView):
+    context_object_name = 'dash_list'
+    template_name = 'itasc/home.html'
+    queryset = ''
 
 class MeasurementsListView(DashMixin, ListView):
     model = Measurements
@@ -47,10 +55,6 @@ class PatientsListView(DashMixin, ListView):
     model = Patients
     template_name = 'itasc/patients_list.html'
 
-class DashBoard(LoginRequiredMixin, DashMixin, ListView):
-    context_object_name = 'dash_list'
-    template_name = 'itasc/home.html'
-    queryset = ''
 
 class PairingsListView(DashMixin, ListView):
     model = Pairings
