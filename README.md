@@ -6,7 +6,7 @@ Needs to be run on public URL SSL certified server (i.e. AWS Lightsail) to expos
 Based on Django framework with mysql database, see requirements.txt for environment. See settings.py for production guides and links. .env is required for secrets.
 
 - v0.8 ready for cloning from github
-- Tested on Lightsail at https://3.72.60.211/itasc/ with self signed SSL 1 June 2022)
+- Tested on Lightsail at https://18.156.113.171/itasc/ with self signed SSL 1 June 2022)
 - Needs full SSL and ideally a named domain 
 
 
@@ -16,7 +16,7 @@ Based on Django framework with mysql database, see requirements.txt for environm
 - 
 
 ### FUNCTIONS
-- Login is required access a. Admin panel and b. view site dashboard
+- Login is required access a. Admin panel and b. iTASC Dashboard
 - Admin panel login allows admin the rights to export of data CSV, creation of other users/groups, editing items
 - User login and rights are controlled by Admin 
 - Pairings are made to match devices (IMEI) to subjects (PatientID) - A pair is unique one-to-one
