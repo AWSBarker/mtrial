@@ -9,7 +9,7 @@
     {% for p in object_list %}
     <tr>
         <td>{{ p.patientid }}</td>
-        <td>{{ p.paired_device.device }}</td>
+        <td>{{ p.pairings.device }}</td>
     </tr>
     {% endfor %}
 </table>

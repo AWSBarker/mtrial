@@ -64,7 +64,6 @@ class MeasurementsAdmin(admin.ModelAdmin):
     def ihb(self, obj):
         return not obj.measurements_annotations_irregularheartbeat
 
-
 class DevicesAdmin(admin.ModelAdmin):
     fields = ('imei',)
     list_display = ('imei', 'get_paired')

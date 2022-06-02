@@ -9,7 +9,7 @@
     {% for d in object_list %}
     <tr>
         <td>{{ d.imei }} </td>
-        <td>{{ d.paired_patient.subject }}</td>
+        <td>{{ d.pairings.subject }}</td>
     </tr>
     {% endfor %}
 </table>
