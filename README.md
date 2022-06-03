@@ -1,13 +1,12 @@
 # iTASC 
 ### M+hub webhook dashboard and data administration site for iTASC trial.
 
-Needs to be run on public URL SSL certified server (i.e. AWS Lightsail) to expose a webhook for D40g (set in M+hub)
+Needs to be run on public URL SSL certified server (i.e. AWS Lightsail) to expose a webhook for D40g JSON basic (set in M+hub)
 
 Based on Django framework with mysql database, see requirements.txt for environment. See settings.py for production guides and links. .env is required for secrets.
 
 - v0.8 ready for cloning from github
-- Tested on Lightsail at https://18.156.113.171/itasc/ with self signed SSL 1 June 2022)
-- Needs a full SSL certificate and ideally a named domain 
+- Tested on Lightsail at https://itasc.ddns.net/itasc/ with SSL certificate (no-ip and letsencrypt) 
 
 
 ## TODO after cloning onto new Ligthsail django instance:
