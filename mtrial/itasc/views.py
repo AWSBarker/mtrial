@@ -15,7 +15,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from itasc.models import Patients, Pairings
 
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from itasc.forms import PairingsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -48,8 +48,11 @@ class PairingsCreateView(LoginRequiredMixin, DashMixin, SuccessMessageMixin, Cre
     form_class = PairingsForm
     #fields = ['subject', 'device']
     success_url = reverse_lazy('itasc:pairings-list')
-    success_message = 'Added pairing  %(subject) '
+    #success_message = 'Added pairing '
     template_name = 'itasc/pairings_create.html'
+
+    def get_success_message(self, cleaned_data):
+        return f"{cleaned_data} has been created successfully"
 
 class PatientsListView(DashMixin, ListView):
     model = Patients
