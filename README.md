@@ -7,7 +7,7 @@ Based on Django framework with mysql database, see requirements.txt for environm
 
 - v0.8 ready for cloning from github
 - Tested on Lightsail at https://18.156.113.171/itasc/ with self signed SSL 1 June 2022)
-- Needs full SSL and ideally a named domain 
+- Needs full SSL certificate and ideally a named domain 
 
 
 ## TODO after cloning onto new Ligthsail django instance:
