@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>M+ trials</title>
+  </head>
+ <body>
+  <h1>Trials List by Rank > 150</h1>
+  {% if trial_list %}
+  <ul>
+    {% for trial in trial_list %}
+      <table>
+          <tr>
+              <td><a href="{{ trial.get_absolute_url }}">{{ trial.nct_id }} </a></td>
+              <td>{{ trial.alloc }} {{ trial.drank_final}}</td>
+              <td>{{ trial.brief_title }}</td>
+          </tr>
+      </table>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no trials.</p>
+  {% endif %}
+</body>
+</html>
+{% endblock %}
