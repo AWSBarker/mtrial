@@ -147,7 +147,9 @@ class Measurements(models.Model):
         verbose_name_plural = "Measurements"
         ordering = ['-measurements_timestamp']
 
-# MUST have at any time unique pairing patient-device. Case where device not assigned?
+# MUST have at any time unique pairing patient-device.
+# Version 2 : any M+ device using save
+
     def save(self, *args, **kwargs):
         try:
             self.patientid = Pairings.objects.get(device = self.device_imei).subject.patientid

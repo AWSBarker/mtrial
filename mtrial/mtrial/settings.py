@@ -4,7 +4,6 @@ Django settings for mtrial project. .env for secrets
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 # see github source for deployment
 """
-import os.path
 from pathlib import Path
 from decouple import config
 import dj_database_url #required for mysql/mariadb

@@ -1,5 +1,5 @@
+# extend to all M+ devices
 import socket
-
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
